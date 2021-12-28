@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import cn from "classnames";
+import * as _ from 'lodash';
 import styles from "./Header.module.sass";
 import Icon from "../Icon";
 import Image from "../Image";
@@ -26,7 +28,7 @@ const nav = [
   },
 ];
 
-const Headers = () => {
+const Headers = ({ wallet, onConnectWallet, onDisconnectWallet }) => {
   const [visibleNav, setVisibleNav] = useState(false);
   const [search, setSearch] = useState("");
 
@@ -90,12 +92,15 @@ const Headers = () => {
         >
           Upload
         </Link>
-        {/* <Link
-          className={cn("button-stroke button-small", styles.button)}
-          to="/connect-wallet"
-        >
-          Connect Wallet
-        </Link> */}
+        {_.isEmpty(wallet) ? (
+          <button className={cn("button-stroke button-small", styles.button)} onClick={onConnectWallet}>
+            <span>Connect Wallet</span>
+          </button>
+        ) : (
+          <button className={cn("button-stroke button-small", styles.button)} onClick={onDisconnectWallet}>
+            <span>Disconnect Wallet</span>
+          </button>
+        )}
         <User className={styles.user} />
         <button
           className={cn(styles.burger, { [styles.active]: visibleNav })}
@@ -104,6 +109,18 @@ const Headers = () => {
       </div>
     </header>
   );
+};
+
+Headers.propTypes = {
+  wallet: PropTypes.object,
+  onConnectWallet: PropTypes.func,
+  onDisconnectWallet: PropTypes.func,
+};
+
+Headers.defaultProps = {
+  wallet: {},
+  onConnectWallet: () => {},
+  onDisconnectWallet: () => {},
 };
 
 export default Headers;
