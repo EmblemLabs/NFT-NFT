@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import cn from "classnames";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import cn from 'classnames';
 import * as _ from 'lodash';
-import styles from "./Header.module.sass";
-import Icon from "../Icon";
-import Image from "../Image";
-import Notification from "./Notification";
-import User from "./User";
+import styles from './Header.module.sass';
+import Icon from '../Icon';
+import Image from '../Image';
+import Notification from './Notification';
+import User from './User';
 
 const nav = [
   {
-    url: "/search01",
-    title: "Discover",
+    url: '/search01',
+    title: 'Discover',
   },
   {
-    url: "/faq",
-    title: "How it work",
+    url: '/faq',
+    title: 'How it work',
   },
   {
-    url: "/item",
-    title: "Create item",
+    url: '/item',
+    title: 'Create item',
   },
   {
-    url: "/profile",
-    title: "Profile",
+    url: '/profile',
+    title: 'Profile',
   },
 ];
 
 const Headers = ({ wallet, onConnectWallet, onDisconnectWallet }) => {
   const [visibleNav, setVisibleNav] = useState(false);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   const handleSubmit = (e) => {
     alert();
@@ -38,14 +38,9 @@ const Headers = ({ wallet, onConnectWallet, onDisconnectWallet }) => {
 
   return (
     <header className={styles.header}>
-      <div className={cn("container", styles.container)}>
+      <div className={cn('container', styles.container)}>
         <Link className={styles.logo} to="/">
-          <Image
-            className={styles.pic}
-            src="/images/logo.png"
-            srcDark="/images/logo.png"
-            alt="Fitness Pro"
-          />
+          <Image className={styles.pic} src="/images/logo.png" srcDark="/images/logo.png" alt="Fitness Pro" />
         </Link>
         <div className={cn(styles.wrapper, { [styles.active]: visibleNav })}>
           <nav className={styles.nav}>
@@ -60,11 +55,7 @@ const Headers = ({ wallet, onConnectWallet, onDisconnectWallet }) => {
               </Link>
             ))}
           </nav>
-          <form
-            className={styles.search}
-            action=""
-            onSubmit={() => handleSubmit()}
-          >
+          <form className={styles.search} action="" onSubmit={() => handleSubmit()}>
             <input
               className={styles.input}
               type="text"
@@ -78,26 +69,20 @@ const Headers = ({ wallet, onConnectWallet, onDisconnectWallet }) => {
               <Icon name="search" size="20" />
             </button>
           </form>
-          <Link
-            className={cn("button-small", styles.button)}
-            to="/upload-variants"
-          >
+          <Link className={cn('button-small', styles.button)} to="/upload-variants">
             Upload
           </Link>
         </div>
         <Notification className={styles.notification} />
-        <Link
-          className={cn("button-small", styles.button)}
-          to="/upload-variants"
-        >
+        <Link className={cn('button-small', styles.button)} to="/upload-variants">
           Upload
         </Link>
         {_.isEmpty(wallet) ? (
-          <button className={cn("button-stroke button-small", styles.button)} onClick={onConnectWallet}>
+          <button className={cn('button-stroke button-small', styles.button)} onClick={onConnectWallet}>
             <span>Connect Wallet</span>
           </button>
         ) : (
-          <button className={cn("button-stroke button-small", styles.button)} onClick={onDisconnectWallet}>
+          <button className={cn('button-stroke button-small', styles.button)} onClick={onDisconnectWallet}>
             <span>Disconnect Wallet</span>
           </button>
         )}

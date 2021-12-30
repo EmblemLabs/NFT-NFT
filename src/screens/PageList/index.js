@@ -1,12 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import cn from "classnames";
-import styles from "./PageList.module.sass";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import cn from 'classnames';
+import styles from './PageList.module.sass';
 
 const PageList = () => {
   return (
     <div className={styles.page}>
-      <div className={cn("container", styles.container)}>
+      <div className={cn('container', styles.container)}>
         <p>
           <Link to="/">Home Page</Link>
         </p>

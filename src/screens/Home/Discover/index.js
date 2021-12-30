@@ -1,27 +1,25 @@
-import React, { useState } from "react";
-import cn from "classnames";
-import styles from "./Discover.module.sass";
-import { Range, getTrackBackground } from "react-range";
-import Slider from "react-slick";
-import Icon from "../../../components/Icon";
-import Card from "../../../components/Card";
-import Dropdown from "../../../components/Dropdown";
+import React, { useState } from 'react';
+import cn from 'classnames';
+import styles from './Discover.module.sass';
+import { Range, getTrackBackground } from 'react-range';
+import Slider from 'react-slick';
+import Icon from '../../../components/Icon';
+import Card from '../../../components/Card';
+import Dropdown from '../../../components/Dropdown';
 
 // data
-import { bids } from "../../../mocks/bids";
+import { bids } from '../../../mocks/bids';
 
-const navLinks = ["All items", "Art", "Game", "Photography", "Music", "Video"];
+const navLinks = ['All items', 'Art', 'Game', 'Photography', 'Music', 'Video'];
 
-const dateOptions = ["Recently added", "Long added"];
-const priceOptions = ["Highest price", "The lowest price"];
-const likesOptions = ["Most liked", "Least liked"];
-const creatorOptions = ["Verified only", "All", "Most liked"];
+const dateOptions = ['Recently added', 'Long added'];
+const priceOptions = ['Highest price', 'The lowest price'];
+const likesOptions = ['Most liked', 'Least liked'];
+const creatorOptions = ['Verified only', 'All', 'Most liked'];
 const sortingOptions = [];
 navLinks.map((x) => sortingOptions.push(x));
 
-const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => (
-  <button {...props}>{children}</button>
-);
+const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => <button {...props}>{children}</button>;
 
 const Discover = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -63,23 +61,18 @@ const Discover = () => {
       },
       {
         breakpoint: 100000,
-        settings: "unslick",
+        settings: 'unslick',
       },
     ],
   };
 
   return (
-    <div className={cn("section", styles.section)}>
-      <div className={cn("container", styles.container)}>
-        <h3 className={cn("h3", styles.title)}>Discover</h3>
+    <div className={cn('section', styles.section)}>
+      <div className={cn('container', styles.container)}>
+        <h3 className={cn('h3', styles.title)}>Discover</h3>
         <div className={styles.top}>
           <div className={styles.dropdown}>
-            <Dropdown
-              className={styles.dropdown}
-              value={date}
-              setValue={setDate}
-              options={dateOptions}
-            />
+            <Dropdown className={styles.dropdown} value={date} setValue={setDate} options={dateOptions} />
           </div>
           <div className={styles.nav}>
             {navLinks.map((x, index) => (
@@ -94,18 +87,10 @@ const Discover = () => {
               </button>
             ))}
           </div>
-          <div className={cn("tablet-show", styles.dropdown)}>
-            <Dropdown
-              className={styles.dropdown}
-              value={sorting}
-              setValue={setSorting}
-              options={sortingOptions}
-            />
+          <div className={cn('tablet-show', styles.dropdown)}>
+            <Dropdown className={styles.dropdown} value={sorting} setValue={setSorting} options={sortingOptions} />
           </div>
-          <button
-            className={cn(styles.filter, { [styles.active]: visible })}
-            onClick={() => setVisible(!visible)}
-          >
+          <button className={cn(styles.filter, { [styles.active]: visible })} onClick={() => setVisible(!visible)}>
             <div className={styles.text}>Filter</div>
             <div className={styles.toggle}>
               <Icon name="filter" size="18" />
@@ -117,30 +102,15 @@ const Discover = () => {
           <div className={styles.sorting}>
             <div className={styles.cell}>
               <div className={styles.label}>Price</div>
-              <Dropdown
-                className={styles.dropdown}
-                value={price}
-                setValue={setPrice}
-                options={priceOptions}
-              />
+              <Dropdown className={styles.dropdown} value={price} setValue={setPrice} options={priceOptions} />
             </div>
             <div className={styles.cell}>
               <div className={styles.label}>likes</div>
-              <Dropdown
-                className={styles.dropdown}
-                value={likes}
-                setValue={setLikes}
-                options={likesOptions}
-              />
+              <Dropdown className={styles.dropdown} value={likes} setValue={setLikes} options={likesOptions} />
             </div>
             <div className={styles.cell}>
               <div className={styles.label}>creator</div>
-              <Dropdown
-                className={styles.dropdown}
-                value={creator}
-                setValue={setCreator}
-                options={creatorOptions}
-              />
+              <Dropdown className={styles.dropdown} value={creator} setValue={setCreator} options={creatorOptions} />
             </div>
             <div className={styles.cell}>
               <div className={styles.label}>Price range</div>
@@ -156,24 +126,24 @@ const Discover = () => {
                     onTouchStart={props.onTouchStart}
                     style={{
                       ...props.style,
-                      height: "27px",
-                      display: "flex",
-                      width: "100%",
+                      height: '27px',
+                      display: 'flex',
+                      width: '100%',
                     }}
                   >
                     <div
                       ref={props.ref}
                       style={{
-                        height: "8px",
-                        width: "100%",
-                        borderRadius: "4px",
+                        height: '8px',
+                        width: '100%',
+                        borderRadius: '4px',
                         background: getTrackBackground({
                           values,
-                          colors: ["#3772FF", "#E6E8EC"],
+                          colors: ['#3772FF', '#E6E8EC'],
                           min: MIN,
                           max: MAX,
                         }),
-                        alignSelf: "center",
+                        alignSelf: 'center',
                       }}
                     >
                       {children}
@@ -185,28 +155,28 @@ const Discover = () => {
                     {...props}
                     style={{
                       ...props.style,
-                      height: "24px",
-                      width: "24px",
-                      borderRadius: "50%",
-                      backgroundColor: "#3772FF",
-                      border: "4px solid #FCFCFD",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
+                      height: '24px',
+                      width: '24px',
+                      borderRadius: '50%',
+                      backgroundColor: '#3772FF',
+                      border: '4px solid #FCFCFD',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
                     }}
                   >
                     <div
                       style={{
-                        position: "absolute",
-                        top: "-33px",
-                        color: "#fff",
-                        fontWeight: "600",
-                        fontSize: "14px",
-                        lineHeight: "18px",
-                        fontFamily: "Poppins",
-                        padding: "4px 8px",
-                        borderRadius: "8px",
-                        backgroundColor: "#141416",
+                        position: 'absolute',
+                        top: '-33px',
+                        color: '#fff',
+                        fontWeight: '600',
+                        fontSize: '14px',
+                        lineHeight: '18px',
+                        fontFamily: 'Poppins',
+                        padding: '4px 8px',
+                        borderRadius: '8px',
+                        backgroundColor: '#141416',
                       }}
                     >
                       {values[0].toFixed(1)}
@@ -222,17 +192,14 @@ const Discover = () => {
           </div>
         </div>
         <div className={styles.list}>
-          <Slider
-            className={cn("discover-slider", styles.slider)}
-            {...settings}
-          >
+          <Slider className={cn('discover-slider', styles.slider)} {...settings}>
             {bids.map((x, index) => (
               <Card className={styles.card} item={x} key={index} />
             ))}
           </Slider>
         </div>
         <div className={styles.btns}>
-          <button className={cn("button-stroke button-small", styles.button)}>
+          <button className={cn('button-stroke button-small', styles.button)}>
             <span>Load more</span>
           </button>
         </div>

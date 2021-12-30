@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "bignumber.js": "^9.0.2",
     "bnc-onboard": "^1.37.0",
     "body-scroll-lock": "^3.1.5",
     "classnames": "^2.3.1",
@@ -29,7 +30,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier",
+    "format": "npm run prettier -- --write 'src/**/*.{js,jsx,json,css}'"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120
   },
   "eslintConfig": {
     "extends": [
@@ -49,5 +56,9 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1"
+  }
 }

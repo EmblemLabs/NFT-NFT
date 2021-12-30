@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import cn from "classnames";
-import styles from "./Group.module.sass";
-import Icon from "../../Icon";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import cn from 'classnames';
+import styles from './Group.module.sass';
+import Icon from '../../Icon';
 
 const Group = ({ className, item }) => {
   const [visible, setVisible] = useState(false);
@@ -15,14 +15,8 @@ const Group = ({ className, item }) => {
       </div>
       <div className={styles.menu}>
         {item.menu.map((x, index) =>
-          x.url.startsWith("http") ? (
-            <a
-              className={styles.link}
-              href={x.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={index}
-            >
+          x.url.startsWith('http') ? (
+            <a className={styles.link} href={x.url} target="_blank" rel="noopener noreferrer" key={index}>
               {x.title}
             </a>
           ) : (

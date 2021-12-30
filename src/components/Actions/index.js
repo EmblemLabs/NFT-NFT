@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import cn from "classnames";
-import OutsideClickHandler from "react-outside-click-handler";
-import styles from "./Actions.module.sass";
-import Transfer from "../Transfer";
-import RemoveSale from "../RemoveSale";
-import Burn from "../Burn";
-import Report from "../Report";
-import Icon from "../Icon";
-import Modal from "../../components/Modal";
+import React, { useState } from 'react';
+import cn from 'classnames';
+import OutsideClickHandler from 'react-outside-click-handler';
+import styles from './Actions.module.sass';
+import Transfer from '../Transfer';
+import RemoveSale from '../RemoveSale';
+import Burn from '../Burn';
+import Report from '../Report';
+import Icon from '../Icon';
+import Modal from '../../components/Modal';
 
 const Actions = ({ className }) => {
   const [visible, setVisible] = useState(false);
@@ -18,28 +18,28 @@ const Actions = ({ className }) => {
 
   const items = [
     {
-      title: "Change price",
-      icon: "coin",
-      action: () => console.log("coin"),
+      title: 'Change price',
+      icon: 'coin',
+      action: () => console.log('coin'),
     },
     {
-      title: "Transfer token",
-      icon: "arrow-right-square",
+      title: 'Transfer token',
+      icon: 'arrow-right-square',
       action: () => setVisibleModalTransfer(true),
     },
     {
-      title: "Remove from sale",
-      icon: "close-circle",
+      title: 'Remove from sale',
+      icon: 'close-circle',
       action: () => setVisibleModalRemoveSale(true),
     },
     {
-      title: "Burn token",
-      icon: "close-circle",
+      title: 'Burn token',
+      icon: 'close-circle',
       action: () => setVisibleModalBurn(true),
     },
     {
-      title: "Report",
-      icon: "info-circle",
+      title: 'Report',
+      icon: 'info-circle',
       action: () => setVisibleModalReport(true),
     },
   ];
@@ -52,10 +52,7 @@ const Actions = ({ className }) => {
             [styles.active]: visible,
           })}
         >
-          <button
-            className={cn("button-circle-stroke", styles.button)}
-            onClick={() => setVisible(!visible)}
-          >
+          <button className={cn('button-circle-stroke', styles.button)} onClick={() => setVisible(!visible)}>
             <Icon name="more" size="24" />
           </button>
           <div className={styles.body}>
@@ -68,28 +65,16 @@ const Actions = ({ className }) => {
           </div>
         </div>
       </OutsideClickHandler>
-      <Modal
-        visible={visibleModalTransfer}
-        onClose={() => setVisibleModalTransfer(false)}
-      >
+      <Modal visible={visibleModalTransfer} onClose={() => setVisibleModalTransfer(false)}>
         <Transfer />
       </Modal>
-      <Modal
-        visible={visibleModalRemoveSale}
-        onClose={() => setVisibleModalRemoveSale(false)}
-      >
+      <Modal visible={visibleModalRemoveSale} onClose={() => setVisibleModalRemoveSale(false)}>
         <RemoveSale />
       </Modal>
-      <Modal
-        visible={visibleModalBurn}
-        onClose={() => setVisibleModalBurn(false)}
-      >
+      <Modal visible={visibleModalBurn} onClose={() => setVisibleModalBurn(false)}>
         <Burn />
       </Modal>
-      <Modal
-        visible={visibleModalReport}
-        onClose={() => setVisibleModalReport(false)}
-      >
+      <Modal visible={visibleModalReport} onClose={() => setVisibleModalReport(false)}>
         <Report />
       </Modal>
     </>

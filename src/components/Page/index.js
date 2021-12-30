@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { withRouter, useLocation } from "react-router-dom";
-import { clearAllBodyScrollLocks } from "body-scroll-lock";
+import React, { useEffect, useState } from 'react';
+import { withRouter, useLocation } from 'react-router-dom';
+import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import Web3 from 'web3';
 
-import { ConnectWalletContext, initOnboard } from "../../utils";
-import NFTTrade from "../../contracts/NFTrade.json"
-import styles from "./Page.module.sass";
-import Header from "../Header";
-import Footer from "../Footer";
+import { ConnectWalletContext, initOnboard } from '../../utils';
+import NFTTrade from '../../contracts/NFTrade.json';
+import styles from './Page.module.sass';
+import Header from '../Header';
+import Footer from '../Footer';
 
 const Page = ({ children }) => {
   const { pathname } = useLocation();
@@ -20,16 +20,14 @@ const Page = ({ children }) => {
       ens: connectWalletContext.setEns,
       network: connectWalletContext.setNetwork,
       balance: connectWalletContext.setBalance,
-      wallet: (wallet) => {
+      wallet: async (wallet) => {
         if (wallet.provider) {
           connectWalletContext.setWallet(wallet);
 
           // Initialize web3 object
           const web3 = new Web3(wallet.provider);
-          const nftContract = new web3.eth.Contract(
-            NFTTrade.abi,
-            "0x40f3eeDf0033DC3e00d7DfE42EB0969f90a4B699",
-          );
+          const nftContract = new web3.eth.Contract(NFTTrade.abi, NFTTrade.networks.address);
+          connectWalletContext.setWeb3(web3);
 
           window.localStorage.setItem('selectedWallet', wallet.name);
           onboard.walletCheck();
@@ -37,19 +35,18 @@ const Page = ({ children }) => {
           // provider = null
           connectWalletContext.setWallet({});
         }
-      }
-    })
+      },
+    });
 
-    setOnboard(onboard)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    setOnboard(onboard);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    const previouslySelectedWallet =
-      window.localStorage.getItem('selectedWallet')
+    const previouslySelectedWallet = window.localStorage.getItem('selectedWallet');
 
     if (previouslySelectedWallet && onboard) {
-      onboard.walletSelect(previouslySelectedWallet)
+      onboard.walletSelect(previouslySelectedWallet);
     }
   }, [onboard]);
 

@@ -1,15 +1,15 @@
-import React from "react";
-import cn from "classnames";
-import styles from "./Accept.module.sass";
+import React from 'react';
+import cn from 'classnames';
+import styles from './Accept.module.sass';
 
 const items = [
   {
-    title: "Service fee",
-    value: "0 ETH",
+    title: 'Service fee',
+    value: '0 ETH',
   },
   {
-    title: "Total bid amount",
-    value: "1.46 ETH",
+    title: 'Total bid amount',
+    value: '1.46 ETH',
   },
 ];
 
@@ -19,8 +19,7 @@ const Accept = ({ className }) => {
       <div className={styles.line}>
         <div className={styles.icon}></div>
         <div className={styles.text}>
-          You are about to accept a bid for <strong>C O I N Z</strong> from{" "}
-          <strong>UI8</strong>
+          You are about to accept a bid for <strong>C O I N Z</strong> from <strong>UI8</strong>
         </div>
       </div>
       <div className={styles.stage}>1.46 ETH for 1 edition</div>
@@ -33,8 +32,8 @@ const Accept = ({ className }) => {
         ))}
       </div>
       <div className={styles.btns}>
-        <button className={cn("button", styles.button)}>Accept bid</button>
-        <button className={cn("button-stroke", styles.button)}>Cancel</button>
+        <button className={cn('button', styles.button)}>Accept bid</button>
+        <button className={cn('button-stroke', styles.button)}>Cancel</button>
       </div>
     </div>
   );

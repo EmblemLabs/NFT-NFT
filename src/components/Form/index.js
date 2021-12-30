@@ -1,17 +1,9 @@
-import React from "react";
-import cn from "classnames";
-import styles from "./Form.module.sass";
-import Icon from "../Icon";
+import React from 'react';
+import cn from 'classnames';
+import styles from './Form.module.sass';
+import Icon from '../Icon';
 
-const Form = ({
-  className,
-  onSubmit,
-  placeholder,
-  value,
-  setValue,
-  type,
-  name,
-}) => {
+const Form = ({ className, onSubmit, placeholder, value, setValue, type, name }) => {
   return (
     <form className={cn(styles.form, className)} action="" onSubmit={onSubmit}>
       <input

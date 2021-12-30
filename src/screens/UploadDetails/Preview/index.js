@@ -1,7 +1,7 @@
-import React from "react";
-import cn from "classnames";
-import styles from "./Preview.module.sass";
-import Icon from "../../../components/Icon";
+import React from 'react';
+import cn from 'classnames';
+import styles from './Preview.module.sass';
+import Icon from '../../../components/Icon';
 
 const Preview = ({ className, onClose }) => {
   return (
@@ -13,11 +13,7 @@ const Preview = ({ className, onClose }) => {
         <div className={styles.info}>Preview</div>
         <div className={styles.card}>
           <div className={styles.preview}>
-            <img
-              srcSet="/images/content/card-pic-6.jpg"
-              src="/images/content/card-pic-6@2x.jpg"
-              alt="Card"
-            />
+            <img srcSet="/images/content/card-pic-6.jpg" src="/images/content/card-pic-6@2x.jpg" alt="Card" />
           </div>
           <div className={styles.link}>
             <div className={styles.body}>

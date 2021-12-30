@@ -1,4 +1,4 @@
-import Onboard from 'bnc-onboard'
+import Onboard from 'bnc-onboard';
 
 const networkId = 4;
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -17,17 +17,17 @@ export function initOnboard(subscriptions) {
         { walletName: 'metamask' },
         {
           walletName: 'walletConnect',
-          infuraKey: 'infura-key'
+          infuraKey: 'infura-key',
         },
         { walletName: 'coinbase' },
-      ]
+      ],
     },
     walletCheck: [
       { checkName: 'derivationPath' },
       { checkName: 'connect' },
       { checkName: 'accounts' },
       { checkName: 'network' },
-      { checkName: 'balance', minimumBalance: '0' }
-    ]
-  })
+      { checkName: 'balance', minimumBalance: '0' },
+    ],
+  });
 }

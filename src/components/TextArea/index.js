@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import cn from "classnames";
-import styles from "./TextArea.module.sass";
+import React, { useState } from 'react';
+import cn from 'classnames';
+import styles from './TextArea.module.sass';
 
 const TextArea = ({ className, label, ...props }) => {
   return (

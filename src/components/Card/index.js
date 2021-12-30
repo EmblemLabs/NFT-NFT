@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import cn from "classnames";
-import { Link } from "react-router-dom";
-import styles from "./Card.module.sass";
-import Icon from "../Icon";
+import React, { useState } from 'react';
+import cn from 'classnames';
+import { Link } from 'react-router-dom';
+import styles from './Card.module.sass';
+import Icon from '../Icon';
 
 const Card = ({ className, item }) => {
   const [visible, setVisible] = useState(false);
@@ -12,21 +12,11 @@ const Card = ({ className, item }) => {
       <div className={styles.preview}>
         <img srcSet={`${item.image2x} 2x`} src={item.image} alt="Card" />
         <div className={styles.control}>
-          <div
-            className={cn(
-              { "status-green": item.category === "green" },
-              styles.category
-            )}
-          >
-            {item.categoryText}
-          </div>
-          <button
-            className={cn(styles.favorite, { [styles.active]: visible })}
-            onClick={() => setVisible(!visible)}
-          >
+          <div className={cn({ 'status-green': item.category === 'green' }, styles.category)}>{item.categoryText}</div>
+          <button className={cn(styles.favorite, { [styles.active]: visible })} onClick={() => setVisible(!visible)}>
             <Icon name="heart" size="20" />
           </button>
-          <button className={cn("button-small", styles.button)}>
+          <button className={cn('button-small', styles.button)}>
             <span>Place a bid</span>
             <Icon name="scatter-up" size="16" />
           </button>
@@ -54,10 +44,7 @@ const Card = ({ className, item }) => {
             <Icon name="candlesticks-up" size="20" />
             Highest bid <span>{item.highestBid}</span>
           </div>
-          <div
-            className={styles.bid}
-            dangerouslySetInnerHTML={{ __html: item.bid }}
-          />
+          <div className={styles.bid} dangerouslySetInnerHTML={{ __html: item.bid }} />
         </div>
       </Link>
     </div>

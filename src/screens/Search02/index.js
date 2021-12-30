@@ -1,42 +1,42 @@
-import React, { useState } from "react";
-import cn from "classnames";
-import styles from "./Search02.module.sass";
-import Image from "../../components/Image";
-import Form from "../../components/Form";
+import React, { useState } from 'react';
+import cn from 'classnames';
+import styles from './Search02.module.sass';
+import Image from '../../components/Image';
+import Form from '../../components/Form';
 
 const items = [
   {
-    title: "Artwork",
-    content: "138 items",
-    image: "/images/content/activity-pic-1.jpg",
+    title: 'Artwork',
+    content: '138 items',
+    image: '/images/content/activity-pic-1.jpg',
   },
   {
-    title: "Photography",
-    content: "138 items",
-    image: "/images/content/activity-pic-5.jpg",
+    title: 'Photography',
+    content: '138 items',
+    image: '/images/content/activity-pic-5.jpg',
   },
   {
-    title: "Game",
-    content: "138 items",
-    image: "/images/content/activity-pic-4.jpg",
+    title: 'Game',
+    content: '138 items',
+    image: '/images/content/activity-pic-4.jpg',
   },
   {
-    title: "Music",
-    content: "138 items",
-    image: "/images/content/activity-pic-2.jpg",
+    title: 'Music',
+    content: '138 items',
+    image: '/images/content/activity-pic-2.jpg',
   },
 ];
 
 const Search = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   const handleSubmit = (e) => {
     alert();
   };
 
   return (
-    <div className={cn("section", styles.section)}>
-      <div className={cn("container", styles.container)}>
+    <div className={cn('section', styles.section)}>
+      <div className={cn('container', styles.container)}>
         <div className={styles.preview}>
           <Image
             srcSet="/images/content/figures@2x.png 2x"
@@ -47,9 +47,7 @@ const Search = () => {
           />
         </div>
         <div className={styles.wrap}>
-          <h2 className={cn("h2", styles.title)}>
-            Sorry, we couldn’t find any results for this search.
-          </h2>
+          <h2 className={cn('h2', styles.title)}>Sorry, we couldn’t find any results for this search.</h2>
           <div className={styles.info}>Maybe give one of these a try?</div>
           <Form
             className={styles.form}
