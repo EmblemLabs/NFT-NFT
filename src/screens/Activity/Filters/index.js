@@ -1,14 +1,9 @@
-import React from "react";
-import cn from "classnames";
-import styles from "./Filters.module.sass";
-import Checkbox from "../../../components/Checkbox";
+import React from 'react';
+import cn from 'classnames';
+import styles from './Filters.module.sass';
+import Checkbox from '../../../components/Checkbox';
 
-const Filters = ({
-  className,
-  filters,
-  selectedFilters,
-  setSelectedFilters,
-}) => {
+const Filters = ({ className, filters, selectedFilters, setSelectedFilters }) => {
   const handleChange = (filter) => {
     if (selectedFilters.includes(filter)) {
       setSelectedFilters(selectedFilters.filter((x) => x !== filter));
@@ -32,12 +27,8 @@ const Filters = ({
         ))}
       </div>
       <div className={styles.btns}>
-        <button className={cn("button-stroke button-small", styles.button)}>
-          Select all
-        </button>
-        <button className={cn("button-stroke button-small", styles.button)}>
-          Unslect all
-        </button>
+        <button className={cn('button-stroke button-small', styles.button)}>Select all</button>
+        <button className={cn('button-stroke button-small', styles.button)}>Unslect all</button>
       </div>
     </div>
   );

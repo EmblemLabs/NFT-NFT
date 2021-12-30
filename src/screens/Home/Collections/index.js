@@ -1,52 +1,50 @@
-import React from "react";
-import cn from "classnames";
-import Slider from "react-slick";
-import { Link } from "react-router-dom";
-import styles from "./Collections.module.sass";
-import Icon from "../../../components/Icon";
+import React from 'react';
+import cn from 'classnames';
+import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
+import styles from './Collections.module.sass';
+import Icon from '../../../components/Icon';
 
 const items = [
   {
-    title: "Awesome collection",
-    author: "Kennith Olson",
-    counter: "28",
-    avatar: "/images/content/avatar-1.jpg",
+    title: 'Awesome collection',
+    author: 'Kennith Olson',
+    counter: '28',
+    avatar: '/images/content/avatar-1.jpg',
     gallery: [
-      "/images/content/photo-1.1.jpg",
-      "/images/content/photo-1.2.jpg",
-      "/images/content/photo-1.3.jpg",
-      "/images/content/photo-1.4.jpg",
+      '/images/content/photo-1.1.jpg',
+      '/images/content/photo-1.2.jpg',
+      '/images/content/photo-1.3.jpg',
+      '/images/content/photo-1.4.jpg',
     ],
   },
   {
-    title: "Awesome collection",
-    author: "Willie Barton",
-    counter: "28",
-    avatar: "/images/content/avatar-3.jpg",
+    title: 'Awesome collection',
+    author: 'Willie Barton',
+    counter: '28',
+    avatar: '/images/content/avatar-3.jpg',
     gallery: [
-      "/images/content/photo-2.1.jpg",
-      "/images/content/photo-2.2.jpg",
-      "/images/content/photo-2.3.jpg",
-      "/images/content/photo-2.4.jpg",
+      '/images/content/photo-2.1.jpg',
+      '/images/content/photo-2.2.jpg',
+      '/images/content/photo-2.3.jpg',
+      '/images/content/photo-2.4.jpg',
     ],
   },
   {
-    title: "Awesome collection",
-    author: "Halle Jakubowski",
-    counter: "28",
-    avatar: "/images/content/avatar-4.jpg",
+    title: 'Awesome collection',
+    author: 'Halle Jakubowski',
+    counter: '28',
+    avatar: '/images/content/avatar-4.jpg',
     gallery: [
-      "/images/content/photo-3.1.jpg",
-      "/images/content/photo-3.2.jpg",
-      "/images/content/photo-3.3.jpg",
-      "/images/content/photo-3.4.jpg",
+      '/images/content/photo-3.1.jpg',
+      '/images/content/photo-3.2.jpg',
+      '/images/content/photo-3.3.jpg',
+      '/images/content/photo-3.4.jpg',
     ],
   },
 ];
 
-const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => (
-  <button {...props}>{children}</button>
-);
+const SlickArrow = ({ currentSlide, slideCount, children, ...props }) => <button {...props}>{children}</button>;
 
 const Collections = () => {
   const settings = {
@@ -81,10 +79,10 @@ const Collections = () => {
   };
 
   return (
-    <div className={cn("section-bg", styles.section)}>
-      <div className={cn("container", styles.container)}>
+    <div className={cn('section-bg', styles.section)}>
+      <div className={cn('container', styles.container)}>
         <div className={styles.wrapper}>
-          <h3 className={cn("h3", styles.title)}>Hot collections</h3>
+          <h3 className={cn('h3', styles.title)}>Hot collections</h3>
           <div className={styles.inner}>
             <Slider className="collection-slider" {...settings}>
               {items.map((x, index) => (
@@ -106,7 +104,7 @@ const Collections = () => {
                         By <span>{x.author}</span>
                       </div>
                     </div>
-                    <div className={cn("status-stroke-black", styles.counter)}>
+                    <div className={cn('status-stroke-black', styles.counter)}>
                       <span>{x.counter}</span> items
                     </div>
                   </div>

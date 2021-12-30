@@ -1,6 +1,6 @@
-import React from "react";
-import cn from "classnames";
-import styles from "./Users.module.sass";
+import React from 'react';
+import cn from 'classnames';
+import styles from './Users.module.sass';
 
 const Users = ({ className, items }) => {
   return (

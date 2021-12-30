@@ -1,34 +1,34 @@
-import React, { useState } from "react";
-import cn from "classnames";
-import styles from "./UploadDetails.module.sass";
-import Dropdown from "../../components/Dropdown";
-import Icon from "../../components/Icon";
-import TextInput from "../../components/TextInput";
-import Switch from "../../components/Switch";
-import Loader from "../../components/Loader";
-import Modal from "../../components/Modal";
-import Preview from "./Preview";
-import Cards from "./Cards";
-import FolowSteps from "./FolowSteps";
+import React, { useState } from 'react';
+import cn from 'classnames';
+import styles from './UploadDetails.module.sass';
+import Dropdown from '../../components/Dropdown';
+import Icon from '../../components/Icon';
+import TextInput from '../../components/TextInput';
+import Switch from '../../components/Switch';
+import Loader from '../../components/Loader';
+import Modal from '../../components/Modal';
+import Preview from './Preview';
+import Cards from './Cards';
+import FolowSteps from './FolowSteps';
 
-const royaltiesOptions = ["10%", "20%", "30%"];
+const royaltiesOptions = ['10%', '20%', '30%'];
 
 const items = [
   {
-    title: "Create collection",
-    color: "#4BC9F0",
+    title: 'Create collection',
+    color: '#4BC9F0',
   },
   {
-    title: "Crypto Legend - Professor",
-    color: "#45B26B",
+    title: 'Crypto Legend - Professor',
+    color: '#45B26B',
   },
   {
-    title: "Crypto Legend - Professor",
-    color: "#EF466F",
+    title: 'Crypto Legend - Professor',
+    color: '#EF466F',
   },
   {
-    title: "Legend Photography",
-    color: "#9757D7",
+    title: 'Legend Photography',
+    color: '#9757D7',
   },
 ];
 
@@ -44,34 +44,24 @@ const Upload = () => {
 
   return (
     <>
-      <div className={cn("section", styles.section)}>
-        <div className={cn("container", styles.container)}>
+      <div className={cn('section', styles.section)}>
+        <div className={cn('container', styles.container)}>
           <div className={styles.wrapper}>
             <div className={styles.head}>
-              <div className={cn("h2", styles.title)}>
-                Create single collectible
-              </div>
-              <button
-                className={cn("button-stroke button-small", styles.button)}
-              >
-                Switch to Multiple
-              </button>
+              <div className={cn('h2', styles.title)}>Create single collectible</div>
+              <button className={cn('button-stroke button-small', styles.button)}>Switch to Multiple</button>
             </div>
             <form className={styles.form} action="">
               <div className={styles.list}>
                 <div className={styles.item}>
                   <div className={styles.category}>Upload file</div>
-                  <div className={styles.note}>
-                    Drag or choose your file to upload
-                  </div>
+                  <div className={styles.note}>Drag or choose your file to upload</div>
                   <div className={styles.file}>
                     <input className={styles.load} type="file" />
                     <div className={styles.icon}>
                       <Icon name="upload-file" size="24" />
                     </div>
-                    <div className={styles.format}>
-                      PNG, GIF, WEBP, MP4 or MP3. Max 1Gb.
-                    </div>
+                    <div className={styles.format}>PNG, GIF, WEBP, MP4 or MP3. Max 1Gb.</div>
                   </div>
                 </div>
                 <div className={styles.item}>
@@ -133,46 +123,38 @@ const Upload = () => {
                 <div className={styles.option}>
                   <div className={styles.box}>
                     <div className={styles.category}>Put on sale</div>
-                    <div className={styles.text}>
-                      You’ll receive bids on this item
-                    </div>
+                    <div className={styles.text}>You’ll receive bids on this item</div>
                   </div>
                   <Switch value={sale} setValue={setSale} />
                 </div>
                 <div className={styles.option}>
                   <div className={styles.box}>
                     <div className={styles.category}>Instant sale price</div>
-                    <div className={styles.text}>
-                      Enter the price for which the item will be instantly sold
-                    </div>
+                    <div className={styles.text}>Enter the price for which the item will be instantly sold</div>
                   </div>
                   <Switch value={price} setValue={setPrice} />
                 </div>
                 <div className={styles.option}>
                   <div className={styles.box}>
                     <div className={styles.category}>Unlock once purchased</div>
-                    <div className={styles.text}>
-                      Content will be unlocked after successful transaction
-                    </div>
+                    <div className={styles.text}>Content will be unlocked after successful transaction</div>
                   </div>
                   <Switch value={locking} setValue={setLocking} />
                 </div>
                 <div className={styles.category}>Choose collection</div>
-                <div className={styles.text}>
-                  Choose an exiting collection or create a new one
-                </div>
+                <div className={styles.text}>Choose an exiting collection or create a new one</div>
                 <Cards className={styles.cards} items={items} />
               </div>
               <div className={styles.foot}>
                 <button
-                  className={cn("button-stroke tablet-show", styles.button)}
+                  className={cn('button-stroke tablet-show', styles.button)}
                   onClick={() => setVisiblePreview(true)}
                   type="button"
                 >
                   Preview
                 </button>
                 <button
-                  className={cn("button", styles.button)}
+                  className={cn('button', styles.button)}
                   onClick={() => setVisibleModal(true)}
                   // type="button" hide after form customization
                   type="button"

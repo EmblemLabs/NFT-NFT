@@ -1,8 +1,8 @@
-import React from "react";
-import cn from "classnames";
-import styles from "./Items.module.sass";
-import Card from "../../../components/Card";
-import Loader from "../../../components/Loader";
+import React from 'react';
+import cn from 'classnames';
+import styles from './Items.module.sass';
+import Card from '../../../components/Card';
+import Loader from '../../../components/Loader';
 
 const Items = ({ className, items }) => {
   return (

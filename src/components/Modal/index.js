@@ -1,18 +1,12 @@
-import React, { useCallback, useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import OutsideClickHandler from "react-outside-click-handler";
-import cn from "classnames";
-import styles from "./Modal.module.sass";
-import Icon from "../Icon";
+import React, { useCallback, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import OutsideClickHandler from 'react-outside-click-handler';
+import cn from 'classnames';
+import styles from './Modal.module.sass';
+import Icon from '../Icon';
 
-const Modal = ({
-  outerClassName,
-  containerClassName,
-  visible,
-  onClose,
-  children,
-}) => {
+const Modal = ({ outerClassName, containerClassName, visible, onClose, children }) => {
   const escFunction = useCallback(
     (e) => {
       if (e.keyCode === 27) {
@@ -23,9 +17,9 @@ const Modal = ({
   );
 
   useEffect(() => {
-    document.addEventListener("keydown", escFunction, false);
+    document.addEventListener('keydown', escFunction, false);
     return () => {
-      document.removeEventListener("keydown", escFunction, false);
+      document.removeEventListener('keydown', escFunction, false);
     };
   }, [escFunction]);
 

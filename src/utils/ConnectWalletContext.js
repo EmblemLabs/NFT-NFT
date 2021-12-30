@@ -1,5 +1,5 @@
-import * as React from "react";
-import PropTypes from "prop-types";
+import * as React from 'react';
+import PropTypes from 'prop-types';
 
 const ConnectWalletContext = React.createContext();
 
@@ -38,8 +38,8 @@ const ConnectWalletProvider = ({ children }) => {
 };
 
 ConnectWalletProvider.propTypes = {
-  children: PropTypes.node.isRequired,    
-}
+  children: PropTypes.node.isRequired,
+};
 
 export default ConnectWalletContext;
 export { ConnectWalletProvider };

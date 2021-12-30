@@ -1,18 +1,18 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./styles/app.sass";
-import Page from "./components/Page";
-import Home from "./screens/Home";
-import UploadVariants from "./screens/UploadVariants";
-import UploadDetails from "./screens/UploadDetails";
-import ConnectWallet from "./screens/ConnectWallet";
-import Faq from "./screens/Faq";
-import Activity from "./screens/Activity";
-import Search01 from "./screens/Search01";
-import Search02 from "./screens/Search02";
-import Profile from "./screens/Profile";
-import ProfileEdit from "./screens/ProfileEdit";
-import Item from "./screens/Item";
-import PageList from "./screens/PageList";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './styles/app.sass';
+import Page from './components/Page';
+import Home from './screens/Home';
+import UploadVariants from './screens/UploadVariants';
+import UploadDetails from './screens/UploadDetails';
+import ConnectWallet from './screens/ConnectWallet';
+import Faq from './screens/Faq';
+import Activity from './screens/Activity';
+import Search01 from './screens/Search01';
+import Search02 from './screens/Search02';
+import Profile from './screens/Profile';
+import ProfileEdit from './screens/ProfileEdit';
+import Item from './screens/Item';
+import PageList from './screens/PageList';
 import { ConnectWalletProvider } from './utils';
 
 function App() {
