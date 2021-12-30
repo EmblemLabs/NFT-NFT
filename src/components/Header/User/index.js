@@ -6,7 +6,7 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import styles from './User.module.sass';
 import Icon from '../../Icon';
 import Theme from '../../Theme';
-import { addressAbbr, ConnectWalletContext } from '../../../utils';
+import { addressAbbr, ConnectWalletContext, convertToFloat } from '../../../utils';
 
 const items = [
   {
@@ -32,8 +32,18 @@ const items = [
 
 const User = ({ className }) => {
   const [visible, setVisible] = useState(false);
+  const [ethAmount, setEthAmount] = useState(0);
   const connectWalletContext = React.useContext(ConnectWalletContext);
 
+  React.useEffect(() => {
+    async function getEthAmount() {
+      const amount = await connectWalletContext.web3.eth.getBalance(connectWalletContext.address);
+      setEthAmount(convertToFloat(amount, 4));
+    }
+    if (connectWalletContext.web3 && connectWalletContext.address) {
+      getEthAmount();
+    }
+  }, [connectWalletContext.address, connectWalletContext.web3]);
   const handleClipboardAddress = () => {
     navigator.clipboard.writeText(connectWalletContext.address);
   };
@@ -46,7 +56,7 @@ const User = ({ className }) => {
             <img src="/images/content/avatar-user.jpg" alt="Avatar" />
           </div>
           <div className={styles.wallet}>
-            7.00698 <span className={styles.currency}>ETH</span>
+            {ethAmount} <span className={styles.currency}>ETH</span>
           </div>
         </div>
         {visible && (
@@ -68,7 +78,7 @@ const User = ({ className }) => {
                     </div>
                     <div className={styles.details}>
                       <div className={styles.info}>Balance</div>
-                      <div className={styles.price}>4.689 ETH</div>
+                      <div className={styles.price}>{ethAmount} ETH</div>
                     </div>
                   </div>
                 </div>

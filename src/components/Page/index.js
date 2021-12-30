@@ -20,13 +20,14 @@ const Page = ({ children }) => {
       ens: connectWalletContext.setEns,
       network: connectWalletContext.setNetwork,
       balance: connectWalletContext.setBalance,
-      wallet: (wallet) => {
+      wallet: async (wallet) => {
         if (wallet.provider) {
           connectWalletContext.setWallet(wallet);
 
           // Initialize web3 object
           const web3 = new Web3(wallet.provider);
-          const nftContract = new web3.eth.Contract(NFTTrade.abi, '0x40f3eeDf0033DC3e00d7DfE42EB0969f90a4B699');
+          const nftContract = new web3.eth.Contract(NFTTrade.abi, NFTTrade.networks.address);
+          connectWalletContext.setWeb3(web3);
 
           window.localStorage.setItem('selectedWallet', wallet.name);
           onboard.walletCheck();
