@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import cn from 'classnames';
 import styles from './NFTDetail.module.sass';
 import { useOpensea } from '../../services';
-import Loader from '../../components/Loader';
+import { Loader, NotFound } from '../../components';
 
 const NFTDetail = () => {
   const { api: openseaApi, constants: openseaConstants } = useOpensea();
@@ -20,7 +20,11 @@ const NFTDetail = () => {
     history.push('/');
   }
 
-  const { data, isLoading } = useQuery(
+  const {
+    data,
+    isLoading,
+    error: getAssetQueryError,
+  } = useQuery(
     [openseaConstants.KEY, collection, tokenId],
     (key, collection, tokenId) => openseaApi.getSingleAsset(collection, tokenId),
     {
@@ -32,24 +36,26 @@ const NFTDetail = () => {
     <>
       <div className={cn('section', styles.section)}>
         {!isLoading ? (
-          <div className={cn('container', styles.container)}>
-            <div className={styles.bg}>
-              <div className={styles.preview}>
-                <img srcSet={data.image_url} src={data.image_url} alt="Item" />
+          getAssetQueryError ? (
+            <NotFound />
+          ) : (
+            <div className={cn('container', styles.container)}>
+              <div className={styles.bg}>
+                <div className={styles.preview}>
+                  <img srcSet={data.image_url} src={data.image_url} alt="Item" />
+                </div>
+              </div>
+              <div className={styles.details}>
+                <h1 className={cn('h3', styles.title)}>{data.name}</h1>
+                <div className={styles.cost}>
+                  <div className={cn('status-stroke-green', styles.price)}>2.5 ETH</div>
+                  <div className={cn('status-stroke-black', styles.price)}>$4,429.87</div>
+                  <div className={styles.counter}>10 in stock</div>
+                </div>
+                <div className={styles.info}>{data.description}</div>
               </div>
             </div>
-            <div className={styles.details}>
-              <h1 className={cn('h3', styles.title)}>{data.name}</h1>
-              <div className={styles.cost}>
-                <div className={cn('status-stroke-green', styles.price)}>2.5 ETH</div>
-                <div className={cn('status-stroke-black', styles.price)}>$4,429.87</div>
-                <div className={styles.counter}>10 in stock</div>
-              </div>
-              <div className={styles.info}>
-                {data.description}
-              </div>
-            </div>
-          </div>
+          )
         ) : (
           <Loader className={styles.loader} />
         )}
