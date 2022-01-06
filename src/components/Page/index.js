@@ -38,6 +38,7 @@ const Page = ({ children }) => {
       },
     });
 
+    connectWalletContext.setOnboard(onboard);
     setOnboard(onboard);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

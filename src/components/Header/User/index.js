@@ -44,6 +44,7 @@ const User = ({ className }) => {
       getEthAmount();
     }
   }, [connectWalletContext.address, connectWalletContext.web3]);
+
   const handleClipboardAddress = () => {
     navigator.clipboard.writeText(connectWalletContext.address);
   };
@@ -120,11 +121,11 @@ const User = ({ className }) => {
   );
 };
 
-Headers.propTypes = {
+User.propTypes = {
   className: PropTypes.string,
 };
 
-Headers.defaultProps = {
+User.defaultProps = {
   className: '',
 };
 
