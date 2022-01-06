@@ -10,6 +10,7 @@ const ConnectWalletProvider = ({ children }) => {
   const [balance, setBalance] = React.useState(null);
   const [wallet, setWallet] = React.useState({});
   const [web3, setWeb3] = React.useState(null);
+  const [onboard, setOnboard] = React.useState(null);
 
   return (
     <ConnectWalletContext.Provider
@@ -26,6 +27,8 @@ const ConnectWalletProvider = ({ children }) => {
         setWallet,
         web3,
         setWeb3,
+        onboard,
+        setOnboard,
         reset: () => {
           setAddress(null);
           setEns(null);
