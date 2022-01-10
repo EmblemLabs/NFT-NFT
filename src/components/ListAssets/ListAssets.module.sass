@@ -7,9 +7,23 @@
     position: relative
 
 .title
-    margin-bottom: 64px
+    margin-bottom: 32px
     +m
-        margin-bottom: 48px
+        margin-bottom: 20px
+
+.filterContainer
+    display: flex
+    margin-bottom: 32px
+    +m
+        margin-bottom: 20px
+
+.col
+    flex: 0 0 calc(50% - 16px)
+    width: calc(50% - 16px)
+    margin: 0 16px 0 0 
+    +d
+        width: 100%
+        margin: 0
 
 .inner
     margin: 0 -16px
@@ -41,3 +55,8 @@
     +m
         display: block
         margin: 0
+
+.action
+    display: flex
+    justify-content: flex-end
+    margin-top: 15px

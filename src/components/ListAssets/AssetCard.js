@@ -4,9 +4,9 @@ import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import styles from './AssetCard.module.sass';
 
-const AssetCard = ({ className, item }) => {
+const AssetCard = ({ className, item, isSelected, onClick }) => {
   return (
-    <div className={cn(styles.card, className)}>
+    <div className={cn(styles.card, className, { [styles.selected]: isSelected })} onClick={(e) => onClick()}>
       <div className={styles.preview}>
         <img srcSet={`${item.image} 2x`} src={item.image} alt="Card" />
       </div>
@@ -24,11 +24,15 @@ const AssetCard = ({ className, item }) => {
 
 AssetCard.propTypes = {
   item: PropTypes.object.isRequired,
+  isSelected: PropTypes.bool,
   className: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 AssetCard.defaultProps = {
+  isSelected: false,
   className: null,
+  onClick: () => {},
 };
 
 export default AssetCard;

@@ -12,6 +12,9 @@ import { ConnectWalletContext } from '../../utils';
 const NFTDetail = () => {
   const walletContext = React.useContext(ConnectWalletContext);
   const [isOfferModalOpen, setIsOfferModalOpen] = React.useState(false);
+  const [search, setSearch] = React.useState(null);
+  const [selectedAsset, setSelectedAsset] = React.useState(null);
+
   const { api: openseaApi, constants: openseaConstants } = useOpensea();
   const { api: emblemApi, constants: emblemConstants } = useEmblemVault();
 
@@ -51,6 +54,22 @@ const NFTDetail = () => {
     }
   );
 
+  const filteredAssets = React.useMemo(() => {
+    if (isMyAssetsLoading) {
+      return [];
+    }
+    if (!search) {
+      return myAssets;
+    }
+    return myAssets.filter(
+      (asset) => asset.name.toLowerCase().includes(search) || asset.description.toLowerCase().includes(search)
+    );
+  }, [isMyAssetsLoading, myAssets, search]);
+
+  const handleSearch = (value) => {
+    setSearch(value.toLowerCase());
+  };
+
   return (
     <>
       <div className={cn('section', styles.section)}>
@@ -72,7 +91,7 @@ const NFTDetail = () => {
                   <div className={styles.counter}>10 in stock</div>
                 </div>
                 <div className={styles.offerButton}>
-                  <MakeOfferButton collection={collection} onClick={() => setIsOfferModalOpen(true)} />
+                  <MakeOfferButton asset={singleAsset} onClick={() => setIsOfferModalOpen(true)} />
                 </div>
                 <div className={styles.info}>{singleAsset.description}</div>
               </div>
@@ -88,7 +107,12 @@ const NFTDetail = () => {
           outerClassName={styles.modalContainer}
           onClose={() => setIsOfferModalOpen(false)}
         >
-          <ListAssets items={myAssets} />
+          <ListAssets
+            items={filteredAssets}
+            selectedAsset={selectedAsset}
+            onSearch={handleSearch}
+            onSelectedAsset={setSelectedAsset}
+          />
         </Modal>
       )}
     </>

@@ -1,9 +1,6 @@
 import React from 'react';
-import { useQuery } from 'react-query';
-import { useHistory, useLocation } from 'react-router';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
-import styles from './NFTDetail.module.sass';
 import { ConnectWalletContext } from '../../utils';
 
 const BUTTON_STATUS = {
@@ -12,14 +9,14 @@ const BUTTON_STATUS = {
   OTHER: 'OTHER',
 };
 
-const MakeOfferButton = ({ collection, onClick }) => {
+const MakeOfferButton = ({ asset, onClick }) => {
   const walletContext = React.useContext(ConnectWalletContext);
   const [status, setStatus] = React.useState(BUTTON_STATUS.NOT_CONNECTED);
 
   React.useEffect(() => {
     if (walletContext.address) {
       // wallet is connected
-      if (collection === walletContext.address) {
+      if (asset?.owner?.address === walletContext.address) {
         setStatus(BUTTON_STATUS.MINE);
       } else {
         setStatus(BUTTON_STATUS.OTHER);
@@ -27,7 +24,7 @@ const MakeOfferButton = ({ collection, onClick }) => {
     } else {
       setStatus(BUTTON_STATUS.NOT_CONNECTED);
     }
-  }, [collection, walletContext.address]);
+  }, [asset.owner.address, walletContext.address]);
 
   const handleClick = () => {
     switch (status) {
@@ -45,18 +42,19 @@ const MakeOfferButton = ({ collection, onClick }) => {
   };
 
   return (
-    <button className={cn('button')} onClick={handleClick}>
+    <button className={cn('button', { disabled: status === BUTTON_STATUS.MINE })} onClick={handleClick}>
       Make offer
     </button>
   );
 };
 
 MakeOfferButton.propTypes = {
-  collection: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  asset: PropTypes.object,
 };
 
 MakeOfferButton.defaultProps = {
+  myAssets: {},
   onClick: () => {},
 };
 
